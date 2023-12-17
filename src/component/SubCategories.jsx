@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubCategoriesData from "../data/subcategories.json";
 import { SubProduct } from "./SubProduct";
 console.log(SubCategoriesData.subcatergories);
@@ -13,7 +13,6 @@ export function SubCategories({ productId }) {
     (subCatagory) => subCatagory.productId === productId
   );
 
-  //   console.log(subCatagoryArray);
   function handleSearchQuery(e) {
     console.log(e.target.value);
     setSearchQuery(e.target.value);
