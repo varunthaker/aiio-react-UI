@@ -1,44 +1,33 @@
-import { useEffect, useState } from "react";
-import { SubCategories } from "./SubCategories";
+import { useContext, useState } from "react";
+import { SubCategories } from "./SubCategorieList";
+import "../styles/products.css";
+import { MyStoreContext } from "../context/MyStore";
 
 export function ProductList() {
-  const [productData, setProductData] = useState([]);
-  const [productState, setProductState] = useState();
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch("./products.json");
-        const data = await response.json();
-        setProductData(data.products);
-      } catch (error) {
-        console.error("Error Fetching data", error);
-      }
-    };
-    fetchProduct();
-  }, []);
+  const { products } = useContext(MyStoreContext);
+  const [productId, setProductId] = useState("");
 
   function handlecheckBox(id) {
-    setProductState(id);
+    setProductId(id);
   }
 
   return (
-    <div>
-      <h3>Products</h3>
-      <button>Done</button>
-      {productData?.map((product) => (
-        <div key={product.productId}>
-          <label htmlFor={product.productName}>{product.productName}</label>
-          <input
-            type="checkbox"
-            id={product.productId}
-            name={product.productName}
-            onChange={() => handlecheckBox(product.productId)}
-          />
-        </div>
-      ))}
-      {productState && <SubCategories productId={productState} />}
-      <button>+ ADD PRODUCT</button>
+    <div className="productsDiv">
+      <div className="productListDiv">
+        {products?.map((product) => (
+          <div className="productDiv" key={product.productId}>
+            <label htmlFor={product.productName}>{product.productName}</label>
+            <input
+              type="checkbox"
+              id={product.productId}
+              name={product.productName}
+              onChange={() => handlecheckBox(product.productId)}
+            />
+          </div>
+        ))}
+
+        {productId && <SubCategories productId={productId} />}
+      </div>
     </div>
   );
 }

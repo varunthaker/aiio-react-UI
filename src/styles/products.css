@@ -1,0 +1,41 @@
+.productsDiv {
+  background-color: rgb(30, 197, 230);
+  padding: 0.5rem;
+  position: relative;
+}
+
+.name {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.doneButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.productListDiv {
+  background-color: blanchedalmond;
+  padding: 5px;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: self-start;
+}
+
+.productDiv {
+  background-color: white;
+  display: flex;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+input {
+}
