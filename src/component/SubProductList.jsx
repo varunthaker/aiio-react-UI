@@ -1,11 +1,10 @@
 import { useState, useContext } from "react";
 import { MyStoreContext } from "../context/MyStore";
+import "../styles/subproducts.css";
 
 export function SubProduct({ subCategoryId }) {
   const { subProducts, setSubProductID } = useContext(MyStoreContext);
-
   const [searchQuery, setSearchQuery] = useState("");
-
   const subProductArray = subProducts?.filter(
     (subProduct) => subProduct.subCategoryId === subCategoryId
   );
@@ -22,21 +21,33 @@ export function SubProduct({ subCategoryId }) {
   }
 
   return (
-    <div>
-      <h3>Select Sub-Products </h3>
-      <input type="text" onChange={(e) => handleSearchQuery(e)} />
-      {filteredSubProductArray?.map((subProduct) => (
-        <div key={subProduct.subProductId}>
-          <label>{subProduct.subProductName}</label>
-          <input
-            type="checkbox"
-            id={subProduct.subProductId}
-            name={subProduct.subProductName}
-            onChange={() => setSubProductID(subProduct.productId)}
-          />
+    <div className="subProductContainer">
+      <div className="header">
+        <h4>Select Sub-Products </h4>
+      </div>
+      <div className="subProductSubContainer">
+        <input
+          type="text"
+          className="searchQueryInput"
+          placeholder="Search"
+          onChange={(e) => handleSearchQuery(e)}
+        />
+        <div className="subProductList">
+          {filteredSubProductArray?.map((subProduct) => (
+            <div className="subProduct" key={subProduct.subProductId}>
+              <label>{subProduct.subProductName}</label>
+              <input
+                className="subProductInput"
+                type="checkbox"
+                id={subProduct.subProductId}
+                name={subProduct.subProductName}
+                onChange={() => setSubProductID(subProduct.productId)}
+              />
+            </div>
+          ))}
         </div>
-      ))}
-      <button>+ ADD SUB-PRODUCT</button>
+      </div>
+      <button className="addSubProductButton">+ ADD SUB-PRODUCT</button>
     </div>
   );
 }
