@@ -8,6 +8,9 @@ export function MyStoreContextProvider(props) {
   const [products, setProducts] = useState([]);
   const [subCatagories, setSubCatagories] = useState([]);
   const [subProducts, setSubProducts] = useState([]);
+  const [productID, setProductID] = useState("");
+  const [subCatagoryID, setSubCatagoryID] = useState("");
+  const [subProductID, setSubProductID] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -48,7 +51,17 @@ export function MyStoreContextProvider(props) {
     fetchsubProducts();
   }, []);
 
-  const contextValue = { products, subCatagories, subProducts };
+  const contextValue = {
+    products,
+    subCatagories,
+    subProducts,
+    productID,
+    setProductID,
+    subCatagoryID,
+    setSubCatagoryID,
+    subProductID,
+    setSubProductID,
+  };
 
   return (
     <MyStoreContext.Provider value={contextValue}>

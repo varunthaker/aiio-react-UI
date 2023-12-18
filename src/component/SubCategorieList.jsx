@@ -3,8 +3,8 @@ import { SubProduct } from "./SubProductList";
 import { MyStoreContext } from "../context/MyStore";
 
 export function SubCategories({ productId }) {
-  const { subCatagories } = useContext(MyStoreContext);
-  const [subCatagoryId, setSubCatagoryId] = useState("");
+  const { subCatagories, subCatagoryID, setSubCatagoryID } =
+    useContext(MyStoreContext);
   const [searchQuery, setSearchQuery] = useState("");
 
   const subCatagoryArray = subCatagories?.filter(
@@ -22,10 +22,6 @@ export function SubCategories({ productId }) {
     setSearchQuery(e.target.value);
   }
 
-  function handlecheckBox(subCatId) {
-    setSubCatagoryId(subCatId);
-  }
-
   return (
     <>
       <div>
@@ -38,14 +34,14 @@ export function SubCategories({ productId }) {
               type="checkbox"
               id={subCatagory.productId}
               name={subCatagory.subCategoryName}
-              onChange={() => handlecheckBox(subCatagory.subCategoryId)}
+              onChange={() => setSubCatagoryID(subCatagory.subCategoryId)}
             />
           </div>
         ))}
         <button>+ ADD SUBCATEGORY</button>
       </div>
 
-      {subCatagoryId && <SubProduct subCategoryId={subCatagoryId} />}
+      {subCatagoryID && <SubProduct subCategoryId={subCatagoryID} />}
     </>
   );
 }

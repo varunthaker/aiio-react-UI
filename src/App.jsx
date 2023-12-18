@@ -10,12 +10,12 @@ function App() {
   return (
     <div>
       <MyStoreContextProvider>
-        <div>
+        <main>
           <h3>Products</h3>
           <button onClick={() => setOnDoneState(true)}>Done</button>
           <ProductList />
           <button>+ ADD PRODUCT</button>
-        </div>
+        </main>
         {onDoneState && <DoneModal handleCloseModal={setOnDoneState} />}
       </MyStoreContextProvider>
     </div>

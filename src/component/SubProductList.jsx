@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import { MyStoreContext } from "../context/MyStore";
 
 export function SubProduct({ subCategoryId }) {
-  const { subProducts } = useContext(MyStoreContext);
-  const [subProductId, setSubProductId] = useState("");
+  const { subProducts, setSubProductID } = useContext(MyStoreContext);
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const subProductArray = subProducts?.filter(
@@ -16,10 +16,6 @@ export function SubProduct({ subCategoryId }) {
         .toLowerCase()
         .includes(searchQuery.toLowerCase())
   );
-
-  function handlecheckBox(subCatId) {
-    setSubProductId(subCatId);
-  }
 
   function handleSearchQuery(e) {
     setSearchQuery(e.target.value);
@@ -36,7 +32,7 @@ export function SubProduct({ subCategoryId }) {
             type="checkbox"
             id={subProduct.subProductId}
             name={subProduct.subProductName}
-            onChange={() => handlecheckBox(subProduct.productId)}
+            onChange={() => setSubProductID(subProduct.productId)}
           />
         </div>
       ))}

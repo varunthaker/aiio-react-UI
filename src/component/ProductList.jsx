@@ -1,15 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SubCategories } from "./SubCategorieList";
 import "../styles/products.css";
 import { MyStoreContext } from "../context/MyStore";
 
 export function ProductList() {
-  const { products } = useContext(MyStoreContext);
-  const [productId, setProductId] = useState("");
-
-  function handlecheckBox(id) {
-    setProductId(id);
-  }
+  const { products, setProductID, productID } = useContext(MyStoreContext);
 
   return (
     <div className="productsDiv">
@@ -21,12 +16,12 @@ export function ProductList() {
               type="checkbox"
               id={product.productId}
               name={product.productName}
-              onChange={() => handlecheckBox(product.productId)}
+              onChange={() => setProductID(product.productId)}
             />
           </div>
         ))}
 
-        {productId && <SubCategories productId={productId} />}
+        {productID && <SubCategories productId={productID} />}
       </div>
     </div>
   );
