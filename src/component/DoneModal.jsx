@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import "../styles/products.css";
 import { MyStoreContext } from "../context/MyStore";
 
 export function DoneModal({ handleCloseModal }) {
@@ -18,7 +19,7 @@ export function DoneModal({ handleCloseModal }) {
   });
 
   return (
-    <>
+    <div className="doneModal">
       <h3>Products </h3>
 
       {productID &&
@@ -34,7 +35,9 @@ export function DoneModal({ handleCloseModal }) {
         selectedSubProducts.map(
           (subProduct) => `${subProduct.subProductName}, `
         )}
-      <button onClick={() => handleCloseModal(false)}>Save</button>
-    </>
+      <button className="saveButton" onClick={() => handleCloseModal(false)}>
+        Save
+      </button>
+    </div>
   );
 }

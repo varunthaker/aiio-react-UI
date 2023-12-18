@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { SubProduct } from "./SubProductList";
 import { MyStoreContext } from "../context/MyStore";
+import "../styles/subcatagories.css";
 
 export function SubCategories({ productId }) {
   const { subCatagories, subCatagoryID, setSubCatagoryID } =
@@ -23,25 +24,35 @@ export function SubCategories({ productId }) {
   }
 
   return (
-    <>
-      <div>
-        <h3>Select Subcategories </h3>
-        <input type="text" onChange={(e) => handleSearchQuery(e)} />
-        {filteredsubCatagoryArray?.map((subCatagory) => (
-          <div key={subCatagory.subCategoryId}>
-            <label>{subCatagory.subCategoryName}</label>
-            <input
-              type="checkbox"
-              id={subCatagory.productId}
-              name={subCatagory.subCategoryName}
-              onChange={() => setSubCatagoryID(subCatagory.subCategoryId)}
-            />
-          </div>
-        ))}
-        <button>+ ADD SUBCATEGORY</button>
+    <div className="subCatagoryContainer">
+      <div className="header">
+        <h4>Select Subcategories </h4>
       </div>
 
+      <div className="subCatagorySubContainer">
+        <input
+          className="searchQueryInput"
+          placeholder="Search"
+          type="text"
+          onChange={(e) => handleSearchQuery(e)}
+        />
+        <div className="subCatagoryList">
+          {filteredsubCatagoryArray?.map((subCatagory) => (
+            <div className="subCatagory" key={subCatagory.subCategoryId}>
+              <label>{subCatagory.subCategoryName}</label>
+              <input
+                className="subCatagoryInput"
+                type="checkbox"
+                id={subCatagory.productId}
+                name={subCatagory.subCategoryName}
+                onChange={() => setSubCatagoryID(subCatagory.subCategoryId)}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <button className="addCatagoryButton">+ ADD SUBCATEGORY</button>
       {subCatagoryID && <SubProduct subCategoryId={subCatagoryID} />}
-    </>
+    </div>
   );
 }

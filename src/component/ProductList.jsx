@@ -7,12 +7,13 @@ export function ProductList() {
   const { products, setProductID, productID } = useContext(MyStoreContext);
 
   return (
-    <div className="productsDiv">
+    <div className="productsContainer">
       <div className="productListDiv">
         {products?.map((product) => (
-          <div className="productDiv" key={product.productId}>
+          <div className="product" key={product.productId}>
             <label htmlFor={product.productName}>{product.productName}</label>
             <input
+              className="productInput"
               type="checkbox"
               id={product.productId}
               name={product.productName}

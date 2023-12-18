@@ -1,7 +1,7 @@
-.productsDiv {
+main {
   background-color: rgb(30, 197, 230);
   padding: 0.5rem;
-  position: relative;
+  width: 25rem;
 }
 
 .name {
@@ -9,33 +9,56 @@
   font-size: 1.5rem;
 }
 
-.headerDiv {
+.headerContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .doneButton {
   position: absolute;
-  top: 5px;
+  top: auto;
   right: 5px;
 }
 
-.productListDiv {
-  background-color: blanchedalmond;
-  padding: 5px;
-  margin: 1rem;
+.doneModal {
+  background-color: #ededed;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: self-start;
+  align-items: center;
+  position: fixed;
+  width: 30%;
+  top: 30%;
+  left: 34%;
+  padding: 1rem;
 }
 
-.productDiv {
+.saveButton {
+  margin-top: 20px;
+}
+
+.productsContainer {
+  background-color: antiquewhite;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.productListDiv {
   background-color: white;
   display: flex;
-  padding: 5px;
-  font-size: 1rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.8rem;
 }
 
-input {
+.product {
+  display: flex;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.productInput {
+  position: absolute;
+  right: 1rem;
 }

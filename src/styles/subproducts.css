@@ -1,0 +1,43 @@
+.subProductContainer {
+  background-color: #607274;
+  padding: 0.5rem;
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: column;
+}
+
+.header {
+  color: white;
+}
+
+.addSubProductButton {
+  width: 50%;
+  align-self: center;
+}
+
+.subProductSubContainer {
+  background-color: white;
+  margin-bottom: 1rem;
+}
+
+.subProductList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.5rem;
+}
+.searchQueryInput {
+  width: 90%;
+  margin-top: 1rem;
+}
+
+.subProduct {
+  display: flex;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.subProductInput {
+  position: absolute;
+  right: 1rem;
+}

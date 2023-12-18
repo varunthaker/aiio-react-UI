@@ -1,0 +1,42 @@
+.subCatagoryContainer {
+  background-color: #092635;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  color: white;
+}
+
+.addCatagoryButton {
+  width: 50%;
+  align-self: center;
+}
+
+.subCatagorySubContainer {
+  background-color: aliceblue;
+  margin-bottom: 1rem;
+}
+
+.subCatagoryList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.5rem;
+}
+.searchQueryInput {
+  width: 90%;
+  margin-top: 1rem;
+}
+
+.subCatagory {
+  display: flex;
+  position: relative;
+  padding: 0.5rem;
+}
+
+.subCatagoryInput {
+  position: absolute;
+  right: 1rem;
+}
