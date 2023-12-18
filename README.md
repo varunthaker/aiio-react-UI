@@ -1,8 +1,17 @@
-# React + Vite
+// README.md
+# AIIO React UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Introduction
+The Task aims to create Product, Sub-catagories and Sub-Products list
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Installation Guide and Usage
+* Clone this repository [here](https://github.com/varunthaker/aiio-react-UI.git).
+* RUN npm install to install all dependencies
+* RUN npm run dev to start the Project
+* Connect to suggest localhost after run on cmd Terminal.
+  
+### Technologies Used
+* Javascript/React
+* 
+### License
+It's open source project
