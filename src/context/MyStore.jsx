@@ -8,14 +8,14 @@ export function MyStoreContextProvider(props) {
   const [products, setProducts] = useState([]);
   const [subCatagories, setSubCatagories] = useState([]);
   const [subProducts, setSubProducts] = useState([]);
-  const [productID, setProductID] = useState("");
-  const [subCatagoryID, setSubCatagoryID] = useState("");
-  const [subProductID, setSubProductID] = useState("");
+  const [selectedProducts, setSelectedProducts] = useState({});
+  const [selectedSubCatagories, setSelectedSubCatagories] = useState({});
+  const [selectedSubProducts, setSelectedSubProducts] = useState({});
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("./products.json");
+        const response = await fetch("http://localhost:8000/products/");
         const data = await response.json();
         setProducts(data.products);
       } catch (error) {
@@ -28,9 +28,9 @@ export function MyStoreContextProvider(props) {
   useEffect(() => {
     const fetchsubCatagories = async () => {
       try {
-        const response = await fetch("./subcategories.json");
+        const response = await fetch("http://localhost:8000/subcategories/");
         const data = await response.json();
-        setSubCatagories(data.subcatergories);
+        setSubCatagories(data.subcategories);
       } catch (error) {
         console.error("Error Fetching data", error);
       }
@@ -41,7 +41,7 @@ export function MyStoreContextProvider(props) {
   useEffect(() => {
     const fetchsubProducts = async () => {
       try {
-        const response = await fetch("./subproducts.json");
+        const response = await fetch("http://localhost:8000/subproducts/");
         const data = await response.json();
         setSubProducts(data.subproducts);
       } catch (error) {
@@ -51,16 +51,36 @@ export function MyStoreContextProvider(props) {
     fetchsubProducts();
   }, []);
 
+  const addSelectedProduct = (productId) => {
+    setSelectedProducts({
+      ...selectedProducts,
+      [productId]: !selectedProducts[productId],
+    });
+  };
+
+  const addSubCatagory = (subcatgoryId) => {
+    setSelectedSubCatagories({
+      ...selectedSubCatagories,
+      [subcatgoryId]: !selectedSubCatagories[subcatgoryId],
+    });
+  };
+
+  const addSubProduct = (subproductId) => {
+    setSelectedSubProducts({
+      ...selectedSubProducts,
+      [subproductId]: !selectedSubProducts[subproductId],
+    });
+  };
   const contextValue = {
     products,
     subCatagories,
     subProducts,
-    productID,
-    setProductID,
-    subCatagoryID,
-    setSubCatagoryID,
-    subProductID,
-    setSubProductID,
+    addSelectedProduct,
+    addSubCatagory,
+    addSubProduct,
+    selectedProducts,
+    selectedSubCatagories,
+    selectedSubProducts,
   };
 
   return (

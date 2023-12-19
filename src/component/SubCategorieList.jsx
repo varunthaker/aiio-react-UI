@@ -4,7 +4,7 @@ import { MyStoreContext } from "../context/MyStore";
 import "../styles/subcatagories.css";
 
 export function SubCategories({ productId }) {
-  const { subCatagories, subCatagoryID, setSubCatagoryID } =
+  const { subCatagories, selectedSubCatagories, addSubCatagory } =
     useContext(MyStoreContext);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -45,14 +45,16 @@ export function SubCategories({ productId }) {
                 type="checkbox"
                 id={subCatagory.productId}
                 name={subCatagory.subCategoryName}
-                onChange={() => setSubCatagoryID(subCatagory.subCategoryId)}
+                onClick={() => addSubCatagory(subCatagory.subCategoryId)}
               />
+              {selectedSubCatagories[subCatagory.subCategoryId] && (
+                <SubProduct subCategoryId={subCatagory.subCategoryId} />
+              )}
             </div>
           ))}
         </div>
       </div>
       <button className="addCatagoryButton">+ ADD SUBCATEGORY</button>
-      {subCatagoryID && <SubProduct subCategoryId={subCatagoryID} />}
     </div>
   );
 }

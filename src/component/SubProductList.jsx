@@ -3,7 +3,7 @@ import { MyStoreContext } from "../context/MyStore";
 import "../styles/subproducts.css";
 
 export function SubProduct({ subCategoryId }) {
-  const { subProducts, setSubProductID } = useContext(MyStoreContext);
+  const { subProducts, addSubProduct } = useContext(MyStoreContext);
   const [searchQuery, setSearchQuery] = useState("");
   const subProductArray = subProducts?.filter(
     (subProduct) => subProduct.subCategoryId === subCategoryId
@@ -41,7 +41,7 @@ export function SubProduct({ subCategoryId }) {
                 type="checkbox"
                 id={subProduct.subProductId}
                 name={subProduct.subProductName}
-                onChange={() => setSubProductID(subProduct.productId)}
+                onChange={() => addSubProduct(subProduct.productId)}
               />
             </div>
           ))}
