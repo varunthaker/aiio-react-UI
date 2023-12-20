@@ -12,41 +12,57 @@ export function DoneModal({ handleCloseModal }) {
     selectedSubProducts,
   } = useContext(MyStoreContext);
 
-  // console.log(selectedProducts);
-  // console.log(selectedSubCatagories);
-  // console.log(selectedSubProducts);
+  // get array all keys
+  // get the keys whose values are true
+  // find product whose key same as productID
+  // return productName
+  // filter if null
 
-  // const productToDisplay = products.filter((product) => {
-  //   return product.productId === selectedProducts[products];
-  // });
+  const productsToDisplay = Object.keys(selectedProducts)
+    .filter((keyId) => selectedProducts[keyId])
+    .map((keyId) => {
+      const product = products.find(
+        (prod) => prod.productId === parseInt(keyId)
+      );
+      return product ? product.productName : null;
+    })
+    .filter((productName) => productName !== null);
 
-  // const selectedSubCatagories = subCatagories.filter((subCategorie) => {
-  //   return subCategorie.productId === productID;
-  // });
+  const subCategoriesToDisplay = Object.keys(selectedSubCatagories)
+    .filter((keyId) => selectedSubCatagories[keyId])
+    .map((keyId) => {
+      const subCategory = subCatagories.find(
+        (subCat) => subCat.subCategoryId === parseInt(keyId)
+      );
+      return subCategory ? subCategory.subCategoryName : null;
+    })
+    .filter((subCatagorieName) => subCatagorieName !== null);
 
-  // const selectedSubProducts = subProducts.filter((subProduct) => {
-  //   return subProduct.subCategoryId === subCatagoryID;
-  // });
+  const subProductsToDisplay = Object.keys(selectedSubProducts)
+    .filter((keyId) => selectedSubProducts[keyId])
+    .map((keyId) => {
+      const subProduct = subProducts.find(
+        (subProd) => subProd.subProductId === parseInt(keyId)
+      );
+      return subProduct ? subProduct.subProductName : null;
+    })
+    .filter((subProductName) => subProductName !== null);
 
   return (
     <div className="doneModal">
       <h3>Products </h3>
 
-      {/* {selectedProducts &&
-        selectedProducts.map((selectedProduct) => selectedProduct.productName)} */}
+      {selectedProducts &&
+        productsToDisplay.map((productToDisplay) => `${productToDisplay}, `)}
 
       <h3>Sub Categories</h3>
-      {/* {selectedProducts &&
-        selectedSubCatagories.map(
-          (subCatagorie) => `${subCatagorie.subCategoryName}, `
-        )} */}
+      {selectedSubCatagories &&
+        subCategoriesToDisplay.map((subCatagorie) => `${subCatagorie}, `)}
       <h3>Sub Products</h3>
-      {/* {selectedSubProducts &&
-        selectedSubProducts.map(
-          (subProduct) => `${subProduct.subProductName}, `
-        )} */}
+      {selectedSubProducts &&
+        subProductsToDisplay.map((subProduct) => `${subProduct}, `)}
       <button className="saveButton" onClick={() => handleCloseModal(false)}>
-        Save
+        Close
       </button>
     </div>
   );
