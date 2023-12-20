@@ -1,10 +1,12 @@
 import { useState, useContext } from "react";
 import { MyStoreContext } from "../context/MyStore";
 import "../styles/subproducts.css";
+import { AddSubProduct } from "./AddSubProductModal";
 
 export function SubProduct({ subCategoryId }) {
   const { subProducts, addSubProduct } = useContext(MyStoreContext);
   const [searchQuery, setSearchQuery] = useState("");
+  const [openAddSubProductModal, setOpenAddSubProductModal] = useState(false);
   const subProductArray = subProducts?.filter(
     (subProduct) => subProduct.subCategoryId === subCategoryId
   );
@@ -47,7 +49,18 @@ export function SubProduct({ subCategoryId }) {
           ))}
         </div>
       </div>
-      <button className="addSubProductButton">+ ADD SUB-PRODUCT</button>
+      {openAddSubProductModal && (
+        <AddSubProduct
+          subCategoryId={subCategoryId}
+          setOpenAddSubProductModal={setOpenAddSubProductModal}
+        />
+      )}
+      <button
+        onClick={() => setOpenAddSubProductModal(true)}
+        className="addSubProductButton"
+      >
+        + ADD SUB-PRODUCT
+      </button>
     </div>
   );
 }
