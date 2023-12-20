@@ -15,7 +15,7 @@ export function MyStoreContextProvider(props) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("./products.json");
+        const response = await fetch("http://localhost:8000/products/");
         const data = await response.json();
         setProducts(data.products);
       } catch (error) {
@@ -28,7 +28,7 @@ export function MyStoreContextProvider(props) {
   useEffect(() => {
     const fetchsubCatagories = async () => {
       try {
-        const response = await fetch("./subcategories.json");
+        const response = await fetch("http://localhost:8000/subcategories/");
         const data = await response.json();
         setSubCatagories(data.subcategories);
       } catch (error) {
@@ -41,7 +41,7 @@ export function MyStoreContextProvider(props) {
   useEffect(() => {
     const fetchsubProducts = async () => {
       try {
-        const response = await fetch("./subproducts.json");
+        const response = await fetch("http://localhost:8000/subproducts/");
         const data = await response.json();
         setSubProducts(data.subproducts);
       } catch (error) {
