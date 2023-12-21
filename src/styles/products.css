@@ -62,3 +62,23 @@ main {
   position: absolute;
   right: 1rem;
 }
+
+.productForm {
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 30%;
+  top: 30%;
+  left: 34%;
+  padding: 0.5rem;
+}
+
+.buttonsDiv {
+  margin: 0.8rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

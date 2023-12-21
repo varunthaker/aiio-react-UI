@@ -1,3 +1,4 @@
+import "../styles/products.css";
 export function AddSubProduct({ subCategoryId, setOpenAddSubProductModal }) {
   async function handleAddSubProduct(event) {
     event.preventDefault();
@@ -22,15 +23,15 @@ export function AddSubProduct({ subCategoryId, setOpenAddSubProductModal }) {
     }
   }
   return (
-    <div>
+    <div className="productForm">
       <h3>Add Sub-Product</h3>
       <form onSubmit={(e) => handleAddSubProduct(e)}>
         <label htmlFor="subProductName">Sub product Name:</label>
-        <input type="text" name="subProductName" />
+        <input type="text" name="subProductName" required />
         <br />
         <label htmlFor="subCategoryId">Sub Category Id:</label>
         <input type="text" name="subCategoryId" defaultValue={subCategoryId} />
-        <div>
+        <div className="buttonsDiv">
           <button type="submit">Submit</button>
           <button
             type="button"
